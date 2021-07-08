@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>FrontEndSystem.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+FrontEndSystem.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.is</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.ArrayDeque</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Queue</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">FrontEndSystem {</span>
+    <span class="s0">private </span><span class="s1">Queue&lt;Request&gt; requestsQueue = </span><span class="s0">new </span><span class="s1">ArrayDeque()</span><span class="s0">;</span>
+
+
+    <span class="s0">public synchronized void </span><span class="s1">addRequest(Request request) </span><span class="s0">throws </span><span class="s1">InterruptedException{</span>
+        <span class="s0">while </span><span class="s1">(requestsQueue.size() == </span><span class="s2">2</span><span class="s1">)</span>
+            <span class="s1">wait()</span><span class="s0">;</span>
+        <span class="s1">requestsQueue.add(request)</span><span class="s0">;</span>
+        <span class="s1">System.out.println()</span><span class="s0">;</span>
+        <span class="s1">notifyAll()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public synchronized </span><span class="s1">Request getRequest(){</span>
+        <span class="s1">Request request = </span><span class="s0">null;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
